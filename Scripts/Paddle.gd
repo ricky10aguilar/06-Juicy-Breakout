@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+onready var Bounce = get_node("/root/Game/Bounce")
 onready var _shape = $ColorRect.get_rect().size
 onready var _view = get_viewport().get_visible_rect().size
 onready var _collision_transform = $CollisionShape2D.get_transform().get_scale()
@@ -15,6 +16,7 @@ func _ready():
 	position.y = 50
 	$Tween.interpolate_property(self, "position", position, _target, 1.5, Tween.TRANS_BOUNCE, Tween.EASE_OUT)
 	$Tween.start()
+	
 
 
 

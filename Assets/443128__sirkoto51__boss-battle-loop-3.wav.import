@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/443128__sirkoto51__boss-battle-loop-3.wav-6612d4e76fa0057f7c1bf4a02d95962f.sample"
+
+[deps]
+
+source_file="res://Assets/443128__sirkoto51__boss-battle-loop-3.wav"
+dest_files=[ "res://.import/443128__sirkoto51__boss-battle-loop-3.wav-6612d4e76fa0057f7c1bf4a02d95962f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -3,7 +3,10 @@ extends RigidBody2D
 onready var Game = get_node("/root/Game")
 onready var Starting = get_node("/root/Game/Starting")
 onready var Camera = get_node("/root/Game/Camera")
-onready var Comet = get_node("/root/Game/Comet")
+onready var Trail = get_node("/root/Game/Trail")
+onready var Bounce = get_node("/root/Game/Bounce")
+onready var Hit = get_node("/root/Game/Hit")
+onready var Ding = get_node("/root/Game/Ding")
 
 
 var _decay_rate = 0.8
@@ -24,7 +27,7 @@ func _ready():
 	set_max_contacts_reported(4)
 	_start_position = $ColorRect.rect_position
 	_normal_color = $ColorRect.color
-	
+
 func _process(delta):
 	if _trauma > 0:
 		_decay_trauma(delta)
@@ -34,6 +37,21 @@ func _process(delta):
 		_apply_color()
 	if _color == 0 and $ColorRect.color != _normal_color:
 		$ColorRect.color = _normal_color
+
+	var temp = $ColorRect.duplicate()
+	temp.rect_position = Vector2(position.x + $ColorRect.rect_position.x, position.y + $ColorRect.rect_position.y)
+	temp.name = "Trail" + str(_count)
+	_count += 1
+	temp.color = temp.color.linear_interpolate(Color(0,0,0,1), 0.5)
+	Trail.add_child(temp)
+	var trail = Trail.get_children()
+	for t in trail:
+		t.rect_size = Vector2(t.rect_size.x - _size_decay, t.rect_size.y - _size_decay)
+		t.color.a -+ _alpha_decay
+		if t.color.a <= 0:
+			t.color.a = 0
+		if t.rect_size.x <= 0.5 or t.color.a <= 0:
+			t.queue_free()
 	
 func _physics_process(delta):
 	# Check for collisions
@@ -45,14 +63,18 @@ func _physics_process(delta):
 			Game.change_score(body.points)
 			Camera.add_trauma(0.25)
 			add_color(1.0)
+			Hit.playing = true
 			body.kill()
 		if body.name == "Paddle":
+			Bounce.playing = true
 			var tile_rows = get_tree().get_nodes_in_group("Tile Row")
 			for tile in tile_rows:
 				tile.add_trauma(1.0)
 		if body.name == "kill":
 			Camera.add_trauma(0.2)
-			body.queue_free()
+			Bounce.playing = true
+		if body.name == "Wall":
+			Ding.playing = true
 			
 	if position.y > get_viewport().size.y:
 		Game.change_lives(-1)

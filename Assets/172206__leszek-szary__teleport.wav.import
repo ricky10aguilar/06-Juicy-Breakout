@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/172206__leszek-szary__teleport.wav-60a46071413a7e7d9384c3e5165a0aaf.sample"
+
+[deps]
+
+source_file="res://Assets/172206__leszek-szary__teleport.wav"
+dest_files=[ "res://.import/172206__leszek-szary__teleport.wav-60a46071413a7e7d9384c3e5165a0aaf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
