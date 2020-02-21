@@ -10,9 +10,9 @@ bounce = 1.0
 extents = Vector2( 8, 8 )
 
 [node name="Ball" type="RigidBody2D"]
-editor/display_folded = true
 position = Vector2( 544, 488 )
 mode = 2
+mass = 0.513265
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 linear_velocity = Vector2( 200, -200 )
@@ -24,10 +24,14 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 2
 margin_left = -8.0
 margin_top = -8.0
 margin_right = 8.0
 margin_bottom = 8.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 2 )
