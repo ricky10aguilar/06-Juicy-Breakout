@@ -528,7 +528,7 @@ position = Vector2( 65, -55 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 51 )
 animation = "New Anim 2"
-frame = 32
+frame = 29
 speed_scale = 2.4
 playing = true
 
@@ -537,7 +537,7 @@ position = Vector2( -65, -55 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 51 )
 animation = "New Anim 2"
-frame = 32
+frame = 29
 speed_scale = 2.4
 playing = true
 
@@ -550,7 +550,7 @@ use_parent_material = true
 position = Vector2( 1.57127, -15.3196 )
 scale = Vector2( 0.754495, 0.674706 )
 frames = SubResource( 65 )
-frame = 52
+frame = 58
 speed_scale = 2.5
 playing = true
 
